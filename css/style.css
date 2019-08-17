@@ -1,0 +1,50 @@
+/* variables */
+:root {
+  --white-color: #fff;
+  --first-black-color: #202024;
+  --second-black-color: #2c2c32;
+  --first-btn-color: #98c4c5;
+  --second-btn-color: #7bb1bc;
+  --third-btn-color: #556976;
+}
+
+/* general */
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.wrapper {
+    width: 90vw;
+    max-width: 1250px;
+    padding: 0.5rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: var(--base-color);
+    font-family: 'Lato', sans-serif;
+}
+
+/* ukrycie tekstu przy ikonach */
+.sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+}
+
+/* media queries*/
+@media only screen and (min-width: 700px) {
+
+}
