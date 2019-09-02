@@ -7,6 +7,7 @@
     --first-btn-color: #98c4c5;
     --second-btn-color: #7bb1bc;
     --third-btn-color: #556976;
+    --links-color: #5E91C3;
     --background-btn: rgba(255, 255, 255, 0.3);
 }
 
@@ -262,6 +263,7 @@ body {
 .header-subpage {
     background: var(--second-black-color);
     position: relative;
+    z-index: 0;
 }
 
 .header-subpage::after {
@@ -295,108 +297,125 @@ body {
     margin: 0;
 }
 
-.subpage-menu {
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    display: none;
+.hamburger {
+    padding: 10px;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    display: inline-block;
+    cursor: pointer;
 }
 
-.show-menu {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+.hamburger, .menu {
+    -webkit-transition: -webkit-transform .3s .1s ease-in-out;
+    transition: -webkit-transform .3s .1s ease-in-out;
+    -o-transition: transform .3s .1s ease-in-out;
+    transition: transform .3s .1s ease-in-out;
+    transition: transform .3s .1s ease-in-out, -webkit-transform .3s .1s ease-in-out;
 }
 
-.hide-header {
-    display: none;
+.hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+    z-index: 3;
 }
 
-.subpage-menu li {
-    padding: 0.5rem 0;
+.hamburger-inner {
+    width: 100%;
+    height: 3px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    -webkit-transition: background 0.3s 0.2s ease-in-out;
+    -o-transition: background 0.3s 0.2s ease-in-out;
+    transition: background 0.3s 0.2s ease-in-out;
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: white;
+    position: absolute;
+    left: 0;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+.hamburger-inner::before {
+    top: -10px;
+}
+
+.hamburger-inner::after {
+    top: 10px;
+}
+
+.hamburger-active .hamburger-inner {
+    background: transparent;
+}
+
+.hamburger-active .hamburger-inner::before {
+    -webkit-transform: translateY(10px) rotate(45deg);
+    -ms-transform: translateY(10px) rotate(45deg);
+    transform: translateY(10px) rotate(45deg);
+    background: var(--third-black-color);
+}
+
+.hamburger-active .hamburger-inner::after {
+    -webkit-transform: translateY(-10px) rotate(-45deg);
+    -ms-transform: translateY(-10px) rotate(-45deg);
+    transform: translateY(-10px) rotate(-45deg);
+    background: var(--third-black-color);
+}
+
+.menu {
+    height: 100vh;
+    width: 100%;
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    z-index: 2;
+}
+
+.menu-list {
+    margin-top: 50px;
+    padding: 0 30px;
     list-style: none;
 }
 
-.subpage-menu li:first-of-type {
-    margin-left: 0;
+.menu-list li {
+    margin-bottom: 20px;
 }
 
-.subpage-menu a {
-    color: var(--white-color);
+.menu-list a {
     text-decoration: none;
+    color: var(--third-black-color);
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
 }
 
-.subpage-menu a:hover {
-    text-decoration: underline;
+.menu-list a:hover {
+    color: var(--links-color);
 }
 
-/* hamburger */
-.hamburger {
-    width: 40px;
-    height: 35px;
-    position: absolute;
-    top: 30px;
-    right: 20px;
-    cursor: pointer;
-    -webkit-transition: -webkit-transform 0.2s;
-    transition: -webkit-transform 0.2s;
-    -o-transition: transform 0.2s;
-    transition: transform 0.2s;
-    transition: transform 0.2s, -webkit-transform 0.2s;
-}
-
-.hamburger span {
-    width: 40px;
-    height: 6px;
-    background: var(--white-color);
-    position: absolute;
-    left: 0;
-    -webkit-transition: top .2s .2s, bottom .2s .2s, opacity .2s .2s, -webkit-transform .2s .4s;
-    transition: top .2s .2s, bottom .2s .2s, opacity .2s .2s, -webkit-transform .2s .4s;
-    -o-transition: top .2s .2s, bottom .2s .2s, opacity .2s .2s, transform .2s .4s;
-    transition: top .2s .2s, bottom .2s .2s, opacity .2s .2s, transform .2s .4s;
-    transition: top .2s .2s, bottom .2s .2s, opacity .2s .2s, transform .2s .4s, -webkit-transform .2s .4s;
-}
-
-.hamburger span:nth-of-type(0) {
-    top: 0;
-}
-
-.hamburger span:nth-of-type(1) {
-    top: calc(50% - 3px);
-}
-
-.hamburger span:last-of-type {
-    bottom: 0;
-}
-
-.hamburger.active {
-    -webkit-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-}
-
-.hamburger.active span:nth-child(1) {
-    top: calc(50% - 3px);
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    bottom: calc(50% - 3px);
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+.menu-active {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
 }
 
 .subpage-section {
@@ -544,25 +563,31 @@ body {
         padding: 3rem 0 2rem;
     }
 
-    .subpage-menu {
-        height: 10%;
+    .menu {
+        height: 10vh;
+        background: transparent;
+        position: static;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    .menu-list {
+        margin-top: 2rem;
+        padding: 0;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
     }
 
-    .subpage-menu li {
-        margin-left: 2rem;
+    .menu-list li {
+        margin-bottom: 0;
+        margin-left: 1rem;
+    }
+
+    .menu-list a {
+        text-decoration: none;
+        color: var(--base-color);
     }
 
     .hamburger {
