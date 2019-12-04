@@ -10,7 +10,7 @@ function showHamburgerMenu() {
     hamburger.addEventListener("click", handleClick);
 }
 
-const init = () => {
+const init = function() {
     showHamburgerMenu();
 };
 
