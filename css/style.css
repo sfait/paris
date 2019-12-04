@@ -17,9 +17,15 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
 body {
     overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
 .wrapper {
